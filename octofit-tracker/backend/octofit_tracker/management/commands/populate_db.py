@@ -22,17 +22,22 @@ class Command(BaseCommand):
         bruce = User.objects.create(email='bruce@wayne.com', name='Bruce Wayne', team=dc.name, is_superhero=True)
         clark = User.objects.create(email='clark@kent.com', name='Clark Kent', team=dc.name, is_superhero=True)
 
+        tony_id = str(tony._id)
+        steve_id = str(steve._id)
+        bruce_id = str(bruce._id)
+        clark_id = str(clark._id)
+
         # Create activities
-        Activity.objects.create(user=tony, type='run', duration=30, date='2024-01-01')
-        Activity.objects.create(user=steve, type='cycle', duration=45, date='2024-01-02')
-        Activity.objects.create(user=bruce, type='swim', duration=60, date='2024-01-03')
-        Activity.objects.create(user=clark, type='fly', duration=120, date='2024-01-04')
+        Activity.objects.create(user=tony_id, type='run', duration=30, date='2024-01-01')
+        Activity.objects.create(user=steve_id, type='cycle', duration=45, date='2024-01-02')
+        Activity.objects.create(user=bruce_id, type='swim', duration=60, date='2024-01-03')
+        Activity.objects.create(user=clark_id, type='fly', duration=120, date='2024-01-04')
 
         # Create leaderboard
-        Leaderboard.objects.create(user=tony, score=200)
-        Leaderboard.objects.create(user=steve, score=180)
-        Leaderboard.objects.create(user=bruce, score=220)
-        Leaderboard.objects.create(user=clark, score=250)
+        Leaderboard.objects.create(user=tony_id, score=200)
+        Leaderboard.objects.create(user=steve_id, score=180)
+        Leaderboard.objects.create(user=bruce_id, score=220)
+        Leaderboard.objects.create(user=clark_id, score=250)
 
         # Create workouts
         Workout.objects.create(name='Pushups', description='Do pushups', difficulty='easy')
