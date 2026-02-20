@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const Teams = () => {
   const [data, setData] = useState([]);
-  const endpoint = `${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/teams/`;
-  const url = `https://${endpoint}`;
+  const codespace = process.env.REACT_APP_CODESPACE_NAME || window.location.hostname.replace('-8000.app.github.dev', '');
+  const url = `https://${codespace}-8000.app.github.dev/api/teams/`;
 
   useEffect(() => {
     console.log('Fetching Teams from:', url);
