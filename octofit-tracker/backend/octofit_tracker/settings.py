@@ -19,6 +19,7 @@ codespace_name = os.environ.get('CODESPACE_NAME')
 allowed_hosts = ['localhost', '127.0.0.1']
 if codespace_name:
     allowed_hosts.append(f"{codespace_name}-8000.app.github.dev")
+    allowed_hosts.append(f"{codespace_name}")
 ALLOWED_HOSTS = allowed_hosts
 
 INSTALLED_APPS = [
