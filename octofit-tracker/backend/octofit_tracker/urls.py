@@ -4,6 +4,7 @@ from rest_framework import routers
 from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet
 
 import os
+
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -19,10 +20,11 @@ router.register(r'workouts', WorkoutViewSet)
 def api_root(request, format=None):
     codespace_name = os.environ.get('CODESPACE_NAME', None)
     if codespace_name:
+        # Always use HTTPS for Codespace public URL
         base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
     else:
         # Use request.get_host() to support localhost and other hosts
-        scheme = 'https' if request.is_secure() else 'http'
+        scheme = 'http'  # Avoid HTTPS cert issues on localhost
         base_url = f"{scheme}://{request.get_host()}/api/"
     return Response({
         'users': f'{base_url}users/',
