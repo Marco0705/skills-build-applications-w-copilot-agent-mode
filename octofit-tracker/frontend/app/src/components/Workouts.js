@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+
 const Workouts = () => {
   const [data, setData] = useState([]);
-  const codespace = process.env.REACT_APP_CODESPACE_NAME || window.location.hostname.replace('-8000.app.github.dev', '');
+  const codespace = process.env.REACT_APP_CODESPACE_NAME || window.location.host.split('-8000')[0];
   const url = `https://${codespace}-8000.app.github.dev/api/workouts/`;
 
   useEffect(() => {
